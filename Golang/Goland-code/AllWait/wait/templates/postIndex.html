@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>等待列表</title>
+
+    <link rel="icon" href="wait/favicon/post_index.ico" type ="image/x-icon">
+
+</head>
+
+<body>
+<div class="container">
+    <h2>查询等待列表</h2>
+    {{template "Head"}}
+    <div class="row mt-3">
+        {{range $wait := . -}}
+
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+
+                    <h3 class="mb-1">{{$wait.Title}}</h3>
+                    <!--<\p class="card-text mb-auto">等待人数：{{$wait.Number}}<\/p>   -->
+                    <!--<\p class="card-text mb-auto">所在地点：{{$wait.Address}}<\/p>     -->
+                    <!--<\p class="card-text mb-auto">前往方式：{{$wait.Transport}}<\/p>   -->
+                    <a href="/detail?pid={{$wait.ID}}" class="stretched-link">查看详情...</a>
+                </div>
+
+            </div>
+        </div>
+        {{- end}}
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>等待详细</title>
+</head>
+<body>
+{{template "Head"}}
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/post_index" class="nav-link px-2 text-secondary">返回</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="container" mt-3>
+
+        <div class="col-md-6">
+
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+
+                    <h3 class="mb-1">{{.Title}}</h3>
+                    <p class="card-text mb-auto">等待人数：{{.Number}}</p>
+                    <p class="card-text mb-auto">所在地点：{{.Address}}</p>
+                    <p class="card-text mb-auto">前往方式：{{.Transport}}</p>
+
+                </div>
+
+                <div class="col-auto d-none d-lg-block">
+                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
+                         aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
+                                                                                     dy=".3em">等待封面</text>
+                    </svg>
+
+                </div>
+            </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

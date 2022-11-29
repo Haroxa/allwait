@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>添加等待</title>
+</head>
+
+<body>
+
+<div class="container" mt-3>
+    {{template "Head"}}
+    <form method="post" action="/post">
+        <div class="row">
+
+            <div class="col-md-10">
+                <div id="test-editor">
+                    <textarea style="display: none;" name="content"></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-2 mt-3">
+                <label for="title" class="form-label">请输入等待标题</label>
+                <input type="text" name="title" class="form-control" id="title"><br>
+
+                <label for="number" class="form-label">请输入等待人数</label>
+                <input type="text" name="number" class="form-control" id="number"><br>
+
+                <label for="address" class="form-label">请输入等待地址</label>
+                <input type="text" name="address" class="form-control" id="address"><br>
+
+                <label for="transport" class="form-label">请输入前往方式</label>
+                <input type="text" name="transport" class="form-control" id="transport"><br>
+
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+
+
+
+        </div>
+    </form>
+
+</div>
+
+</body>
+
+</html>
