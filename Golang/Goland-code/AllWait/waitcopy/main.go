@@ -1,6 +1,8 @@
 package main
 
-import "wait01/router"
+import (
+	"wait/router"
+)
 
 func main() {
 	router.Start()
