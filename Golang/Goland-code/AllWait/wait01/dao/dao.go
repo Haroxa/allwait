@@ -1,5 +1,7 @@
 package dao
 
+//DAO类都是进行数据操作的类，是对于数据库中的数据做增删改查等操作的代码。
+
 import (
 	"log"
 	"wait01/model"
@@ -38,6 +40,12 @@ type Manager interface {
 	UpdateWait(wait model.Wait, t map[string]interface{}) error
 	AddWait(wait *model.Wait) error // 添加等待
 	DeleteWait(wait model.Wait) (bool, int)
+
+	Upload(img model.Img) error
+	GetImg(title string, name string) model.Img
+	GetImgs(title string) []model.Img
+	DeleteImgs(title string) error
+	DeleteImg(img model.Img) error
 }
 
 type manager struct {
@@ -59,6 +67,8 @@ func init() {
 	db.AutoMigrate(&model.User{})
 
 	db.AutoMigrate(&model.Wait{})
+
+	db.AutoMigrate(&model.Img{})
 }
 
 // 接口内 函数 定义
@@ -111,7 +121,6 @@ func (mgr *manager) DeleteUser(user model.User) (bool, int) {
 
 //二、等待操作
 //显示所有等待
-//---下面要先登录---//
 //查找一个等待
 //修改一个等待
 //增加一个等待
@@ -152,6 +161,39 @@ func (mgr *manager) AddWait(wait *model.Wait) error {
 // 删除一个等待
 func (mgr *manager) DeleteWait(wait model.Wait) (bool, int) {
 	//删除指定用户以及数据库中的删除记录
+	id := wait.ID
 	mgr.db.Unscoped().Delete(&wait)
-	return false, wait.ID
+	return false, id
+}
+
+//图片操作
+// 图片上传
+// 同一title下图片的获取
+// 图片删除
+
+func (mgr *manager) Upload(img model.Img) error {
+	err := mgr.db.Create(&img).Error
+	return err
+}
+
+func (mgr *manager) GetImg(title string, name string) model.Img {
+	var i model.Img
+	mgr.db.Where("title = ? AND name = ?", title, name).First(&i)
+	return i
+}
+
+func (mgr *manager) GetImgs(title string) []model.Img {
+	is := make([]model.Img, 10)
+	mgr.db.Where("title=?", title).Find(&is)
+	return is
+}
+
+func (mgr *manager) DeleteImgs(title string) error {
+	is := make([]model.Img, 1000)
+	mgr.db.Where("title=?", title).Find(&is)
+	return mgr.db.Unscoped().Delete(&is).Error
+}
+
+func (mgr *manager) DeleteImg(img model.Img) error {
+	return mgr.db.Unscoped().Delete(&img).Error
 }

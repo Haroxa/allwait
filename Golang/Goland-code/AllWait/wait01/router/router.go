@@ -35,6 +35,7 @@ func Start() {
 	e.POST("/addwait", controller.AddWait)
 	e.POST("/deletewait", controller.DeleteWait)
 
+	e.POST("/upload", controller.Upload)
 	//服务器端口，默认8080
 	e.Run(":8080")
 }
